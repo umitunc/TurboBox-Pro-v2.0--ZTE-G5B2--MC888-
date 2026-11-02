@@ -6,18 +6,49 @@ Modemin orijinal `goform` ve `cookWithRequest` güvenlik mimarisiyle **%100 uyum
 
 ---
 
-## 🚀 Nasıl Kullanılır? (Adım Adım Kurulum)
+## 🚀 Nasıl Kullanılır? (3 Kolay Yöntem)
 
-### Yöntem 1: Geliştirici Konsolu (F12) ile Çalıştırma (Önerilen)
+### ⚡ Yöntem 1: CDN ile Tek Satırda Çalıştırma (En Pratik)
 
-1. Tarayıcınızdan (Chrome, Edge, Brave veya Firefox) modem arayüzüne girin: **`http://192.168.0.1`**
-2. Modem şifrenizle **oturum açın** ve ana sayfanın tam olarak yüklenmesini bekleyin.
-3. [`turbobox.js`](./turbobox.js) dosyasını açın, tüm kodu seçip kopyalayın (`Ctrl + A` ardından `Ctrl + C`).
-4. Modem arayüzü sekmesinde klavyeden **`F12`** tuşuna (veya `Ctrl + Shift + I` / Sağ Tık -> **İncele**) basın.
-5. Açılan geliştirici panelinde üst menüden **`Console` (Konsol)** sekmesine tıklayın.
-   > 💡 **Not:** Tarayıcınız güvenlik amacıyla ilk kez kod yapıştırırken `allow pasting` (yapıştırmaya izin ver) yazmanızı isteyebilir. Böyle bir uyarı görürseniz konsola `allow pasting` yazıp `Enter` tuşuna basın.
-6. Kopyaladığınız kodu konsola yapıştırın (`Ctrl + V`) ve **`Enter`** tuşuna basın.
-7. Sayfanın en üstünde **⚡ TurboBox Pro v2.0** paneli anında açılacaktır!
+800 satırlık kodu kopyalamakla uğraşmadan, **jsDelivr CDN** üzerinden tek satırlık komutla en güncel sürümü anında yükleyebilirsiniz:
+
+1. Tarayıcınızdan modem arayüzüne girin (**`http://192.168.0.1`**) ve şifrenizle oturum açın.
+2. Klavyeden **`F12`** tuşuna basın ve **`Console` (Konsol)** sekmesini açın.
+   > 💡 *İlk kez kod yapıştırıyorsanız tarayıcı güvenlik uyarısı verebilir; konsola `allow pasting` yazıp `Enter`'a basın.*
+3. Aşağıdaki **tek satırlık CDN kodunu** yapıştırıp **`Enter`** tuşuna basın:
+
+```js
+$.getScript("https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js");
+```
+
+*(Alternatif Saf JS CDN Kodu — Önbellek/Cache atlamalı):*
+```js
+var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js?t='+Date.now();document.head.appendChild(s);
+```
+
+---
+
+### 🔖 Yöntem 2: Tarayıcı Yer İmi (Bookmarklet) ile F12 Açmadan Tek Tıkla Çalıştırma
+
+Her seferinde `F12` konsolunu açmak istemiyorsanız, CDN bağlantısını tarayıcınızın **Yer İmleri Çubuğuna** bir buton olarak ekleyebilirsiniz:
+
+1. Tarayıcınızda Yer İmleri Çubuğuna (`Ctrl + Shift + B`) sağ tıklayıp **"Yeni Yer İmi Ekle"** (veya *Sayfayı Ekle*) seçeneğine tıklayın.
+2. **Ad (Name)** kısmına: `⚡ TurboBox Pro` yazın.
+3. **URL (Adres)** kısmına aşağıdaki kodu olduğu gibi yapıştırıp kaydedin:
+
+```javascript
+javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js?t='+Date.now();document.head.appendChild(s);})();
+```
+
+4. Artık `192.168.0.1` modem arayüzüne girdiğinizde üstteki **`⚡ TurboBox Pro`** yer imine **tek bir kez tıklamanız** yeterlidir; panel anında açılır!
+
+---
+
+### 💻 Yöntem 3: Çevrimdışı (İnternet Bağlantısı Yokken) Çalıştırma
+
+Modeminizde o an internet bağlantısı tamamen kopmuşsa (CDN'e erişilemiyorsa):
+1. Bu depodaki [`turbobox.js`](./turbobox.js) dosyasının içindeki tüm kodu kopyalayın (`Ctrl + A` -> `Ctrl + C`).
+2. Modem arayüzünde (`192.168.0.1`) **`F12 -> Console`** ekranına yapıştırıp **`Enter`** tuşuna basın.
 
 ---
 
@@ -109,9 +140,8 @@ Panelde canlı grafiklerle (`Sparkline`) gösterilen 4.5G/5G sinyal metriklerini
 ## ❓ Sıkça Sorulan Sorular
 
 * **Sayfayı yenileyince (F5) panel kayboluyor, ayarlarım da silinir mi?**
-  * **Hayır.** Yaptığınız **Bant Seçimi**, **Hücre Kilidi** ve **DNS** ayarları doğrudan modemin kendi hafızasına (`NVRAM`) kaydedilir. Tarayıcıyı kapatsanız bile ayarlarınız aktif kalır. Sadece görsel paneli tekrar görmek istediğinizde kodu konsola yapıştırmanız yeterlidir.
+  * **Hayır.** Yaptığınız **Bant Seçimi**, **Hücre Kilidi** ve **DNS** ayarları doğrudan modemin kendi hafızasına (`NVRAM`) kaydedilir. Tarayıcıyı kapatsanız bile ayarlarınız aktif kalır. Sadece görsel paneli tekrar görmek istediğinizde CDN kodunu veya yer imini çalıştırmanız yeterlidir.
 * **"Modem ile iletişim kurulamadı (Oturum düşmüş olabilir)" uyarısı alıyorum, ne yapmalıyım?**
   * ZTE modemler belirli bir süre işlem yapılmadığında güvenlik amacıyla oturumu kapatır. Modem arayüzüne şifrenizle tekrar giriş yapıp kodu yeniden çalıştırın.
 * **Bant veya Hücre kilitledikten sonra internet bağlantım koptuysa ne yapmalıyım?**
   * Seçtiğiniz bant bulunduğunuz bölgede çekmiyor olabilir. Panelden **`📡 4G Bant Seçimi -> 🔄 Otomatik (Tüm Bantlar)`** veya **`🗼 Hücre Sabitle -> 🔓 Kilidi Kaldır (0,0)`** seçeneğine tıklayarak anında varsayılan ayarlara dönebilirsiniz.
-
