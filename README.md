@@ -15,15 +15,10 @@ Modemin orijinal `goform` ve `cookWithRequest` güvenlik mimarisiyle **%100 uyum
 1. Tarayıcınızdan modem arayüzüne girin (**`http://192.168.0.1`**) ve şifrenizle oturum açın.
 2. Klavyeden **`F12`** tuşuna basın ve **`Console` (Konsol)** sekmesini açın.
    > 💡 *İlk kez kod yapıştırıyorsanız tarayıcı güvenlik uyarısı verebilir; konsola `allow pasting` yazıp `Enter`'a basın.*
-3. Aşağıdaki **tek satırlık CDN kodunu** yapıştırıp **`Enter`** tuşuna basın:
+3. Aşağıdaki **tek satırlık CDN kodunu** yapıştırıp **`Enter`** tuşuna basın *(Modemin CSP `script-src` engelini aşmak için `fetch` + `eval` kullanır)*:
 
 ```js
-$.getScript("https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js");
-```
-
-*(Alternatif Saf JS CDN Kodu — Önbellek/Cache atlamalı):*
-```js
-var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js?t='+Date.now();document.head.appendChild(s);
+fetch("https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js?t="+Date.now()).then(r=>r.text()).then(eval);
 ```
 
 ---
@@ -37,7 +32,7 @@ Her seferinde `F12` konsolunu açmak istemiyorsanız, CDN bağlantısını taray
 3. **URL (Adres)** kısmına aşağıdaki kodu olduğu gibi yapıştırıp kaydedin:
 
 ```javascript
-javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js?t='+Date.now();document.head.appendChild(s);})();
+javascript:(function(){fetch("https://cdn.jsdelivr.net/gh/umitunc/TurboBox-Pro-v2.0--ZTE-G5B2--MC888-@main/turbobox.js?t="+Date.now()).then(function(r){return r.text();}).then(eval);})();
 ```
 
 4. Artık `192.168.0.1` modem arayüzüne girdiğinizde üstteki **`⚡ TurboBox Pro`** yer imine **tek bir kez tıklamanız** yeterlidir; panel anında açılır!
